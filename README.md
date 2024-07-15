@@ -1,4 +1,5 @@
-Mernis Service Adapter Project
+MERNİS SERVİCE ADAPTER PROJECT
+
 Bu proje, bir müşteri doğrulama sistemi sunmaktadır. Proje, müşterilerin kimlik bilgilerini doğrulamak için Türkiye Cumhuriyeti Kimlik Paylaşım Sistemi'ni (Mernis) kullanır.
 
 Proje Yapısı
