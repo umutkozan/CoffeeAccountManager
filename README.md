@@ -11,56 +11,8 @@ Soyutlar.ICustomerService: Müşteri servisi arayüzünü tanımlar.
 Soyutlar.IVarliklar: Projedeki varlıkların arayüzünü tanımlar.
 Varliklar.Customer: Müşteri bilgilerini tutan sınıftır.
 Kullanım
-1. MernisServiceAdapter
-MernisServiceAdapter, ICustomerCheckService arayüzünü uygular ve Mernis servisi ile kimlik doğrulaması yapar.
-
-public class MernisServiceAdapter implements ICustomerCheckService {
-    @Override
-    public boolean CheckIfRealPerson(Customer customer) throws RemoteException {
-        KPSPublicSoapProxy client = new KPSPublicSoapProxy();
-        return client.TCKimlikNoDogrula(customer.NationalityId, 
-                                        customer.FirstName.toUpperCase(),
-                                        customer.LastName.toUpperCase(),    
-                                        customer.dateOfBirth.getYear());
-    }
-}
-2. BaseCustomerManager
-BaseCustomerManager, müşteri verilerini kaydetmek için temel bir sınıftır.
-
-public abstract class BaseCustomerManager implements ICustomerService {
-    public void Save(Customer customer) throws Exception {
-        System.out.println("Veritabanına kaydedildi.");
-    }
-}
-3. ICustomerCheckService
-
-ICustomerCheckService, müşteri kimlik doğrulama işlemlerini tanımlayan bir arayüzdür.
-public interface ICustomerCheckService {
-    boolean CheckIfRealPerson(Customer customer) throws RemoteException;
-}
-4. ICustomerService
-
-ICustomerService, müşteri hizmetlerini tanımlayan bir arayüzdür.
-public interface ICustomerService {
-    void Save(Customer customer) throws Exception;
-}
-5. IVarliklar
-
-IVarliklar, projedeki varlıkların arayüzünü tanımlar.
-public interface IVarliklar {
-}
-6. Customer
-
-public class Customer implements IVarliklar {
-    public int id;
-    public String FirstName;
-    public String LastName;
-    public LocalDate dateOfBirth;
-    public long NationalityId;
-}
 
 Customer, müşteri bilgilerini tutan bir sınıftır.
-
 
 Anladım, kopyala yapıştır yaparken düzenin bozulmaması için uygun Markdown formatında yeniden yazıyorum:
 
@@ -76,12 +28,11 @@ Soyutlar.BaseCustomerManager: Müşteri verilerini kaydetmek için temel iş man
 Soyutlar.ICustomerService: Müşteri servisi arayüzünü tanımlar.
 Soyutlar.IVarliklar: Projedeki varlıkların arayüzünü tanımlar.
 Varliklar.Customer: Müşteri bilgilerini tutan sınıftır.
+
 Kullanım
 1. MernisServiceAdapter
 MernisServiceAdapter, ICustomerCheckService arayüzünü uygular ve Mernis servisi ile kimlik doğrulaması yapar.
 
-java
-Kodu kopyala
 public class MernisServiceAdapter implements ICustomerCheckService {
     @Override
     public boolean CheckIfRealPerson(Customer customer) throws RemoteException {
@@ -95,8 +46,6 @@ public class MernisServiceAdapter implements ICustomerCheckService {
 2. BaseCustomerManager
 BaseCustomerManager, müşteri verilerini kaydetmek için temel bir sınıftır.
 
-java
-Kodu kopyala
 public abstract class BaseCustomerManager implements ICustomerService {
     public void Save(Customer customer) throws Exception {
         System.out.println("Veritabanına kaydedildi.");
@@ -105,24 +54,18 @@ public abstract class BaseCustomerManager implements ICustomerService {
 3. ICustomerCheckService
 ICustomerCheckService, müşteri kimlik doğrulama işlemlerini tanımlayan bir arayüzdür.
 
-java
-Kodu kopyala
 public interface ICustomerCheckService {
     boolean CheckIfRealPerson(Customer customer) throws RemoteException;
 }
 4. ICustomerService
 ICustomerService, müşteri hizmetlerini tanımlayan bir arayüzdür.
 
-java
-Kodu kopyala
 public interface ICustomerService {
     void Save(Customer customer) throws Exception;
 }
 5. IVarliklar
 IVarliklar, projedeki varlıkların arayüzünü tanımlar.
 
-java
-Kodu kopyala
 public interface IVarliklar {
 }
 6. Customer
